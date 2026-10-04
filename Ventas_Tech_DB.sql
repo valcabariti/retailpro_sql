@@ -58,6 +58,11 @@ INSERT INTO categorias (id_categoria, nombre_categoria, descripcion) VALUES
   (3, 'Audio',          'Auriculares y parlantes'),
   (4, 'Almacenamiento', 'Discos y memorias');
 
+INSERT INTO territorios (id_territorio, region, pais, zona) VALUES
+  (1, 'Buenos Aires', 'Argentina', 'AMBA'),
+  (2, 'Córdoba',      'Argentina', 'Centro'),
+  (3, 'Salta',     'Argentina', 'Norte');
+
 INSERT INTO clientes (id_cliente, nombre, email, ciudad, fecha_registro) VALUES
   (1, 'María López',  'maria@mail.com',  'Buenos Aires', '2024-01-05'),
   (2, 'Carlos Ruiz',  'carlos@mail.com', 'Córdoba',      '2024-01-10'),
@@ -84,6 +89,10 @@ INSERT INTO ventas (id_venta, id_cliente, id_producto, cantidad, total_venta, fe
   ( 8, 3, 2, 8,   28.00, '2024-03-13'),
   ( 9, 4, 4, 1,  120.00, '2024-03-14'),
   (10, 5, 3, 2,  450.00, '2024-03-15');
+
+UPDATE ventas SET id_territorio = 1 WHERE id_venta IN (1, 4, 7, 10);
+UPDATE ventas SET id_territorio = 2 WHERE id_venta IN (2, 6, 9);
+UPDATE ventas SET id_territorio = 3 WHERE id_venta IN (3, 5, 8);
 
 SELECT * FROM categorias;   -- esperado: 4 filas
 SELECT * FROM clientes;     -- esperado: 5 filas
